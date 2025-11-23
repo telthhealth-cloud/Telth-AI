@@ -1,0 +1,142 @@
+{
+  "asset": {
+    "generator": "Tripo",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "tripo_node_20d0d8d6-bfb2-447e-879b-2b449b16c320"
+    }
+  ],
+  "materials": [
+    {
+      "name": "tripo_mat_20d0d8d6-bfb2-447e-879b-2b449b16c320",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "tripo_mesh_20d0d8d6-bfb2-447e-879b-2b449b16c320",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "TEXCOORD_0": 1
+          },
+          "indices": 2,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ],
+  "images": [
+    {
+      "name": "tripo_image_20d0d8d6-bfb2-447e-879b-2b449b16c320_2",
+      "uri": "futuristic+stasis+pod+3d+model_img0.jpg"
+    },
+    {
+      "name": "tripo_image_20d0d8d6-bfb2-447e-879b-2b449b16c320_0",
+      "uri": "futuristic+stasis+pod+3d+model_img1.jpg"
+    },
+    {
+      "name": "tripo_image_20d0d8d6-bfb2-447e-879b-2b449b16c320_1",
+      "uri": "futuristic+stasis+pod+3d+model_img2.jpg"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 515190,
+      "max": [
+        0.5,
+        0.6705322265625,
+        0.49639892578125
+      ],
+      "min": [
+        -0.5,
+        0,
+        -0.49639892578125
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 515190,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5125,
+      "count": 3000282,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 6182280,
+      "byteOffset": 0,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4121520,
+      "byteOffset": 6182280,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 12001128,
+      "byteOffset": 10303800,
+      "target": 34963
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "futuristic+stasis+pod+3d+model_data.bin",
+      "byteLength": 22304928
+    }
+  ]
+}

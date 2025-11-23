@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Theme Based on User Colors */
+@layer base {
+  :root {
+    /* MAIN BACKGROUND (was beige → now clean white) */
+  --background: 220 20% 99%;
+    --foreground: 292 33% 22%;  /* purple text unchanged */
+
+    /* CARD / SURFACE (was sandal → now soft cool white) */
+  --card: 220 20% 99%; 
+    --card-foreground: 292 33% 22%;
+
+    --popover: 220 20% 99%;        
+    --popover-foreground: 292 33% 22%;
+
+    /* PRIMARY (KEEPING EXACT SAME PURPLE!!) */
+    --primary: 292 50% 30%;                        /*purple in AI medical8*/
+    --primary-foreground:0 0 100;
+;                 /*small icons and buttons inisde colors*/
+
+    /* SECONDARY (replace beige → soft grey-blue) */   
+    --secondary: 220 15% 97%;
+    --secondary-foreground: 292 33% 22%;
+
+    /* MUTED (was beige → now cool grey) */
+     --muted: 220 12% 96%; 
+    --muted-foreground: 292 25% 35%; 
+
+    /* ACCENT (was warm beige → now soft neutral blue-grey) */
+  --accent: 220 18% 98%; 
+    --accent-foreground: 292 33% 22%;
+
+    /* DESTRUCTIVE (kept same) */
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 10, 91, 56%;
+
+    /* INPUT / BORDER (was yellowish → now neutral grey) */
+    --border: 220 12% 85%;
+    --input: 0 0 0;
+    --ring: 292 50% 30%; /* purple unchanged */
+
+    /* MEDICAL PALETTE — purple stays, beige removed */
+    --medical-primary: 292 45% 28%;
+    --medical-secondary: 220 20% 98%;
+    --medical-accent: 220 30% 94%;
+    --medical-text: 292 33% 22%;
+    --medical-light: 220 20% 98%;
+
+    /* GRADIENTS — updated beige to cool neutrals, purple unchanged */
+    --gradient-medical: linear-gradient(135deg, hsl(293, 27%, 63%), hsl(0, 0%, 0%));         /*2nd bg-section AI hub*/
+    --gradient-dark: linear-gradient(135deg, hsl(292 45% 18%), hsl(292 40% 25%));
+    --gradient-overlay: linear-gradient(180deg, hsla(271, 66%, 78%, 0.9), hsla(0 0% 100% / 0.1));
+
+    /* SHADOWS */
+    --shadow-medical: 0 4px 20px hsl(292 30% 10% / 0.1);
+    --shadow-deep: 0 8px 40px hsl(292 30% 10% / 0.15);
+    --shadow-card: 0 2px 10px hsl(292 30% 10% / 0.08);
+
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --radius: 0.5rem;
+
+    /* SIDEBAR – removed beige, kept purple */
+    --sidebar-background: 220 20% 96%;
+    --sidebar-foreground: 292 33% 22%;
+    --sidebar-primary: 292 50% 30%;
+    --sidebar-primary-foreground: 37 72% 98%;
+    --sidebar-accent: 220 30% 94%;
+    --sidebar-accent-foreground: 292 33% 22%;
+    --sidebar-border: 220 12% 85%;
+    --sidebar-ring: 292 50% 30%;
+  }
+
+  /* DARK MODE — Only fixed beige tones, purple untouched */
+  .dark {
+    --background: 292 45% 12%;
+    --foreground: 37 72% 95%;
+
+    --card: 292 40% 15%;
+    --card-foreground: 37 72% 95%;  
+
+    --popover: 292 40% 18%;
+    --popover-foreground: 37 72% 95%;
+
+    --primary: 37 72% 88%;
+    --primary-foreground: 292 45% 15%;
+
+    --secondary: 292 35% 20%;
+    --secondary-foreground: 37 72% 95%;
+
+    --muted: 292 30% 25%;
+    --muted-foreground: 37 72% 85%;
+
+    --accent: 292 35% 28%;
+    --accent-foreground: 37 72% 95%;
+
+    --destructive: 0 65% 40%;
+    --destructive-foreground: 37 72% 95%;
+
+    --border: 292 30% 22%;
+    --input: 292 30% 25%;
+    --ring: 37 72% 88%;
+
+    --sidebar-background: 292 45% 10%;
+    --sidebar-foreground: 37 72% 95%;
+    --sidebar-primary: 37 72% 88%;
+    --sidebar-primary-foreground: 292 45% 18%;
+    --sidebar-accent: 292 35% 18%;
+    --sidebar-accent-foreground: 37 72% 95%;
+    --sidebar-border: 292 30% 20%;
+    --sidebar-ring: 37 72% 88%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    scroll-behavior: smooth;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.sticky-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+@layer components {
+  .parallax-element {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .scroll-fade {
+    transition: var(--transition-smooth);
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .scroll-fade.fade-up {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  .scroll-scale {
+    transition: var(--transition-smooth);
+    transform: scale(1);
+  }
+
+  .scroll-scale.scale-down {
+    transform: scale(0.95);
+  }
+
+  .sticky-release {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+
+  /* Buttons */
+  .btn-medical {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-medical-outline {
+    @apply border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground transition-all duration-300;
+  }
+
+  /* Cards */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  .rotate-y-6 {
+    transform: rotateY(6deg);
+  }
+
+  .rotate-y-12 {
+    transform: rotateY(12deg);
+  }
+}
+
+/* reCAPTCHA fixes */
+.grecaptcha-badge {
+  z-index: 9999 !important;
+}
+[data-radix-portal] iframe[src*="recaptcha"] {
+  z-index: 10000 !important;
+}
+.grecaptcha-popup iframe {
+  z-index: 10001 !important;
+}
+.bubble-floating-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bubble-floating {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.35),
+      rgba(156, 50, 209, 0.6),
+      rgba(0, 0, 0, 0.85)
+  );
+
+  opacity: 0.6;
+  filter: drop-shadow(0 0 12px rgba(200, 80, 255, 0.6));
+  backdrop-filter: blur(3px);
+  animation: bubbleFloat ease-in-out infinite;
+}
+
+/* smooth subtle breathing movement */
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0) scale(var(--scale, 1));
+  }
+  50% {
+    transform: translateY(-15px) scale(calc(var(--scale, 1) * 1.03));
+  }
+  100% {
+    transform: translateY(0) scale(var(--scale, 1));
+  }
+}

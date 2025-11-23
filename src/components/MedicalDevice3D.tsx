@@ -121,3 +121,4 @@ export default function MedicalDevice3D({
   </div>
 );
 }
+useGLTF.preload("/models/futuristicstasispod3dmodel.glb");

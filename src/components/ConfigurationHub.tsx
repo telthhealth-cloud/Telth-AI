@@ -993,24 +993,24 @@ const ConfigurationHub = () => {
       }
     }, 500);
   };
-const handleCategoryChange = (categoryId: string) => {
-  // Only show popup if actually switching to a different category AND current hub has selections
-  if (categoryId !== activeCategory) {
-    const currentHubSelection = hubSelections[activeCategory];
-    const hasSelections = 
-      currentHubSelection.selectedAddons.length > 0 || 
-      Object.values(currentHubSelection.careplanQuantities).some(qty => qty > 0);
+  const handleCategoryChange = (categoryId: string) => {
+    // Only show popup if actually switching to a different category AND current hub has selections
+    if (categoryId !== activeCategory) {
+      const currentHubSelection = hubSelections[activeCategory];
+      const hasSelections =
+        currentHubSelection.selectedAddons.length > 0 ||
+        Object.values(currentHubSelection.careplanQuantities).some(qty => qty > 0);
 
-    if (hasSelections) {
-      setLastActiveCategory(activeCategory); // Store current category
-      setTargetCategory(categoryId); // Store the target category user wants to switch to
-      setShowHubNavigationPopup(true); // Show popup only if current hub has selections
-    } else {
-      // If no selections in current hub, just switch directly
-      setActiveCategory(categoryId);
+      if (hasSelections) {
+        setLastActiveCategory(activeCategory); // Store current category
+        setTargetCategory(categoryId); // Store the target category user wants to switch to
+        setShowHubNavigationPopup(true); // Show popup only if current hub has selections
+      } else {
+        // If no selections in current hub, just switch directly
+        setActiveCategory(categoryId);
+      }
     }
-  }
-};
+  };
   const handleGetPricing = () => {
     setShowHubNavigationPopup(false);
     setActiveCategory(lastActiveCategory); // Stay on current category and open pricing
@@ -1039,7 +1039,7 @@ const handleCategoryChange = (categoryId: string) => {
     setOtpAttempts(prev => prev + 1);
     setLastOtpTime(now);
 
-    try {  
+    try {
       console.log('📱 Generating OTP...');
       setOtpError('');
 
@@ -1561,7 +1561,7 @@ const handleCategoryChange = (categoryId: string) => {
           setShouldSticky(true);
         }
       }
-    };       
+    };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -1728,7 +1728,7 @@ const handleCategoryChange = (categoryId: string) => {
   return (
     <section
       id="configuration"
-      className="py-20 bg-gradient-to-b from-[#6D6F7A] via-[#AFAEC3] to-[#F7F4FB]" 
+      className="py-20 bg-gradient-to-b from-[#6D6F7A] via-[#AFAEC3] to-[#F7F4FB]"
       ref={sectionRef}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
@@ -1808,9 +1808,9 @@ const handleCategoryChange = (categoryId: string) => {
                   <MedicalDevice3D
                     selectedColor={hubSelections[activeCategory].selectedColor}
                     category={activeCategory}
-                    // isAnimating={!isExploreMode}
-                    // isExploreMode={isExploreMode}
-                    // onPartSelect={setSelectedPart}
+                  // isAnimating={!isExploreMode}
+                  // isExploreMode={isExploreMode}
+                  // onPartSelect={setSelectedPart}
                   />
                   <div className="absolute top-4 right-4 z-10">
                     <Button
@@ -2195,43 +2195,46 @@ const handleCategoryChange = (categoryId: string) => {
                                 setSelectedModalDevice(device);
                                 setShowAllDevices(false);
                               }}
-                              className="cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                              className="cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                             >
-                              <div className="relative rounded-2xl overflow-hidden shadow-md border border-border h-[250px]">
-                                {/* Image */}
-                                <div className="w-full h-[160px] bg-gradient-to-br from-muted to-muted/50 overflow-hidden">
+                              <div className="relative rounded-3xl overflow-hidden border border-border bg-background shadow-sm hover:shadow-2xl transition-all group p-4 h-[260px] flex flex-col items-center">
+
+                                {/* Image Container */}
+                                <div className="w-full h-[140px] rounded-xl bg-muted/40 overflow-hidden flex items-center justify-center  group-hover:bg-muted transition">
                                   <img
                                     src={device.imageSrc}
                                     alt={device.name}
-                                    className="w-full h-full object-cover"
+                                    className="h-full w-auto object-contain"
                                   />
                                 </div>
 
-                                {/* Details */}
-                                <div className="p-3 bg-white/10 backdrop-blur-md border-t border-white/20 rounded-b-2xl">
-                                  <h3 className="text-sm font-bold text-foreground truncate text-center mb-1">
-                                    {device.name}
-                                  </h3>
-                                  <p className="text-xs text-muted-foreground line-clamp-3 text-center">
-                                    {device.description?.length > 80
-                                      ? device.description.slice(0, 80) + "..."
-                                      : device.description}
-                                  </p>
-                                  {(device.description?.length > 80 || device.specs?.length > 0) && (
-                                    <button
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        setSelectedModalDevice(device);
-                                        setShowAllDevices(false);
-                                      }}
-                                      className="text-[11px] text-primary mt-2 hover:underline block mx-auto"
-                                    >
-                                      See more
-                                    </button>
-                                  )}
-                                </div>
+                                {/* Device Name */}
+                                <h3 className="text-sm font-semibold text-foreground text-center mt-3 mb-1 px-2 truncate">
+                                  {device.name}
+                                </h3>
+
+                                {/* Description */}
+                                <p className="text-xs text-muted-foreground text-center px-3 line-clamp-2 leading-snug">
+                                  {device.description?.length > 80
+                                    ? device.description.slice(0, 80) + "..."
+                                    : device.description}
+                                </p>
+
+                                {(device.description?.length > 80 || device.specs?.length > 0) && (
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setSelectedModalDevice(device);
+                                      setShowAllDevices(false);
+                                    }}
+                                    className="text-[11px] text-primary mt-2 font-medium hover:underline"
+                                  >
+                                    See more →
+                                  </button>
+                                )}
                               </div>
                             </div>
+
                           ))}
                         </div>
                       </div>
@@ -2240,54 +2243,77 @@ const handleCategoryChange = (categoryId: string) => {
                 )}
                 {/* Individual Device Details Modal */}
                 {selectedModalDevice && (
-                  <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-                    <div className="bg-background rounded-2xl w-full max-w-2xl max-h-[85vh] overflow-hidden shadow-2xl border border-border">
-                      <div className="flex justify-between items-center p-6 border-b border-border">
-                        <h2 className="text-2xl font-bold text-foreground">{selectedModalDevice.name}</h2>
+                  <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4">
+                    <div className="bg-background/80 backdrop-blur-xl rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-hidden shadow-2xl border border-white/20">
+
+                      {/* Header */}
+                      <div className="flex justify-between items-center px-6 py-4 border-b border-white/10">
+                        <h2 className="text-2xl font-bold text-foreground tracking-tight">
+                          {selectedModalDevice.name}
+                        </h2>
+
                         <button
                           onClick={() => setSelectedModalDevice(null)}
-                          className="p-2 hover:bg-destructive/10 rounded-full transition-colors"
+                          className="p-2 rounded-full hover:bg-white/10 transition-all"
                         >
                           <X className="h-6 w-6 text-muted-foreground hover:text-destructive" />
                         </button>
                       </div>
 
-                      {/* FIXED SCROLL CONTAINER - Hide scrollbar but keep scroll */}
-                      <div className="overflow-y-auto max-h-[calc(85vh-120px)] scrollbar-hide">
-                        {/* Full Image - Remove fixed height to allow natural flow */}
-                        <div className="w-full bg-gradient-to-br from-gray-100 to-gray-50">
-                          <img
-                            src={selectedModalDevice.imageSrc}
-                            alt={selectedModalDevice.name}
-                            className="w-full h-full object-cover"
-                          />
+                      {/* Scrollable Content */}
+                      <div className="overflow-y-auto max-h-[calc(85vh-110px)] scrollbar-hide">
+
+                        {/* Image Section */}
+                        <div className="w-full bg-gradient-to-br from-gray-200/40 to-gray-50/20 p-6 flex items-center justify-center">
+                          <div className="rounded-2xl overflow-hidden shadow-md bg-white">
+                            <img
+                              src={selectedModalDevice.imageSrc}
+                              alt={selectedModalDevice.name}
+                              className="w-full h-full object-contain max-h-[300px]"
+                            />
+                          </div>
                         </div>
 
                         {/* Details */}
-                        <div className="p-6 space-y-4">
+                        <div className="p-6 space-y-6">
+
+                          {/* Description */}
                           <div>
-                            <h3 className="font-semibold text-lg mb-2 text-foreground">Description</h3>
-                            <p className="text-muted-foreground leading-relaxed">
+                            <h3 className="font-semibold text-xl text-foreground mb-2">
+                              Overview
+                            </h3>
+                            <p className="text-muted-foreground leading-relaxed text-[15px]">
                               {selectedModalDevice.description}
                             </p>
                           </div>
 
-                          <div>
-                            <h3 className="font-semibold text-lg mb-3 text-foreground">Specifications</h3>
-                            <div className="space-y-2">
-                              {selectedModalDevice.specs.map((spec, index) => (
-                                <div key={index} className="flex items-center gap-3 text-sm">
-                                  <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
-                                  <span className="text-muted-foreground">{spec}</span>
-                                </div>
-                              ))}
+                          {/* Specifications */}
+                          {selectedModalDevice.specs?.length > 0 && (
+                            <div>
+                              <h3 className="font-semibold text-xl text-foreground mb-3">
+                                Specifications
+                              </h3>
+
+                              <div className="space-y-3">
+                                {selectedModalDevice.specs.map((spec, index) => (
+                                  <div
+                                    key={index}
+                                    className="flex gap-3 text-sm items-start bg-white/5 p-3 rounded-xl border border-white/10"
+                                  >
+                                    <div className="w-2 h-2 mt-1 bg-primary rounded-full" />
+                                    <span className="text-muted-foreground">{spec}</span>
+                                  </div>
+                                ))}
+                              </div>
                             </div>
-                          </div>
+                          )}
                         </div>
                       </div>
+
                     </div>
                   </div>
                 )}
+
               </CardContent>
             </Card>
             {/* Careplans Section */}

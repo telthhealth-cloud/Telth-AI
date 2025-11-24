@@ -117,8 +117,8 @@ const ContactSection = () => {
   const socialLinks = [
     { icon: Facebook, href: '#', name: 'Facebook' },
     { icon: Twitter, href: '#', name: 'Twitter' },
-    { icon: Linkedin, href: '#https://www.linkedin.com/company/telth', name: 'LinkedIn' },
-    { icon: Instagram, href: '#https://www.instagram.com/telth_care/', name: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/telth', name: 'LinkedIn' },
+    { icon: Instagram, href: 'https://www.instagram.com/telth_care/', name: 'Instagram' },
   ];
 
   return (

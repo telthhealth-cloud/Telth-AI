@@ -1820,7 +1820,7 @@ const handleCategoryChange = (categoryId: string) => {
                       className="bg-white/90 text-black hover:bg-white"
                     >
                       <Eye className="mr-2 h-4 w-4" />
-                      {isExploreMode ? "Exit Explore" : "Explore"}
+                      {isExploreMode ? "comming soon" : "Explore"}
                     </Button>
                   </div>
                   <div className="absolute top-4 left-4 z-10">

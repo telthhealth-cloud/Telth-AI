@@ -39,6 +39,12 @@ const CertificationsSection = () => {
       description: 'Information security management systems',
       icon: Award,
       validity: '2024-2027'
+    },
+    {
+      title: 'CDSCO ',
+      description: 'Entrusted various responsibilities to central & state regulators for regulation of drugs & cosmetics',
+      icon: Shield,
+      validity: '2024-2027'
     }
   ];
 

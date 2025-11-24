@@ -2028,55 +2028,60 @@ const ConfigurationHub = () => {
                 <div
                   className="p-6 pt-0 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
                   ref={(el) => {
-                    if (el) {
-                      let isDown = false;
-                      let startX;
-                      let scrollLeft;
-                      let isDragMode = false;
-                      let lastClickTime = 0;
+                    if (!el) return;
 
-                      const handleMouseDown = (e) => {
-                        const now = new Date().getTime();
-                        if (now - lastClickTime < 300) {
-                          isDragMode = true;
-                          el.style.cursor = 'grabbing';
-                        }
-                        lastClickTime = now;
+                    let isDown = false;
+                    let startX = 0;
+                    let scrollLeft = 0;
+                    let dragEnabled = false;
+                    let lastClick = 0;
 
-                        if (isDragMode) {
-                          isDown = true;
-                          startX = e.pageX - el.offsetLeft;
-                          scrollLeft = el.scrollLeft;
-                        }
-                      };
+                    const handleMouseDown = (e) => {
+                      const now = Date.now();
 
-                      const handleMouseLeave = () => {
-                        isDown = false;
-                        isDragMode = false;
-                        el.style.cursor = 'grab';
-                      };
+                      // Detect double click
+                      if (now - lastClick < 300) {
+                        dragEnabled = true;
+                        el.style.cursor = "grabbing";
+                      }
+                      lastClick = now;
 
-                      const handleMouseUp = () => {
-                        isDown = false;
-                        isDragMode = false;
-                        el.style.cursor = 'grab';
-                      };
+                      if (dragEnabled) {
+                        isDown = true;
+                        startX = e.clientX;
+                        scrollLeft = el.scrollLeft;
+                      }
+                    };
 
-                      const handleMouseMove = (e) => {
-                        if (!isDown || !isDragMode) return;
-                        e.preventDefault();
-                        const x = e.pageX - el.offsetLeft;
-                        const walk = (x - startX) * 1.5;
-                        el.scrollLeft = scrollLeft - walk;
-                      };
+                    const handleMouseUp = () => {
+                      isDown = false;
+                      dragEnabled = false;
+                      el.style.cursor = "grab";
+                    };
 
-                      el.addEventListener("mousedown", handleMouseDown);
-                      el.addEventListener("mouseleave", handleMouseLeave);
-                      el.addEventListener("mouseup", handleMouseUp);
-                      el.addEventListener("mousemove", handleMouseMove);
-                    }
+                    const handleMouseLeave = () => {
+                      isDown = false;
+                      dragEnabled = false;
+                      el.style.cursor = "grab";
+                    };
+
+                    const handleMouseMove = (e) => {
+                      if (!isDown || !dragEnabled) return;
+
+                      e.preventDefault();
+                      const x = e.clientX;
+                      const walk = (x - startX) * 1.4; // speed multiplier
+                      el.scrollLeft = scrollLeft - walk;
+                    };
+
+                    // Attach events
+                    el.addEventListener("mousedown", handleMouseDown);
+                    el.addEventListener("mouseup", handleMouseUp);
+                    el.addEventListener("mouseleave", handleMouseLeave);
+                    el.addEventListener("mousemove", handleMouseMove);
                   }}
                 >
+
                   <style jsx>{`
             .scrollbar-hide::-webkit-scrollbar {
               display: none;

@@ -97,19 +97,19 @@ const ContactSection = () => {
     {
       icon: Phone,
       title: 'Phone',
-      details: '+1 (555) 123-4567',
+      details: '1800-570-0140',
       description: 'Mon-Fri 9am-6pm EST',
     },
     {
       icon: Mail,
       title: 'Email',
-      details: 'contact@medaisolutions.com',
+      details: 'info@mytelth.com',
       description: '24/7 Support Available',
     },
     {
       icon: MapPin,
       title: 'Office',
-      details: '123 Medical AI Drive, Healthcare City, HC 12345',
+      details: 'The chambers vardhaman Trade center,3rd floor,Nehruplace,New Delhi 110019,India',
       description: 'Visit our headquarters',
     },
   ];
@@ -117,8 +117,8 @@ const ContactSection = () => {
   const socialLinks = [
     { icon: Facebook, href: '#', name: 'Facebook' },
     { icon: Twitter, href: '#', name: 'Twitter' },
-    { icon: Linkedin, href: '#', name: 'LinkedIn' },
-    { icon: Instagram, href: '#', name: 'Instagram' },
+    { icon: Linkedin, href: '#https://www.linkedin.com/company/telth', name: 'LinkedIn' },
+    { icon: Instagram, href: '#https://www.instagram.com/telth_care/', name: 'Instagram' },
   ];
 
   return (

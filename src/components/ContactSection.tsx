@@ -44,7 +44,7 @@ const ContactSection = () => {
 
     try {
       // ✅ Send form data to backend
-      const response = await fetch('https://api.telth.ai:8000/api/v1/webapp1/contact', {
+      const response = await fetch('https://api.telth.ai/api/v1/webapp1/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

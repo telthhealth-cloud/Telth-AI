@@ -1665,7 +1665,7 @@ const ConfigurationHub = () => {
         resetRecaptcha(); // Clear reCAPTCHA
         setRecaptchaSolved(false);
         // Re-initialize reCAPTCHA so user can try again
-        setTimeout(() => {
+        setTimeout(() => { 
           initializeRecaptchaForModal();
         }, 500);
       }

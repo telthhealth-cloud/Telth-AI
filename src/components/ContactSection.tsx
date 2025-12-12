@@ -97,7 +97,7 @@ const ContactSection = () => {
     {
       icon: Phone,
       title: 'Phone',
-      details: '1800-570-0140',
+      details: '+918287777505',
       description: 'Mon-Fri 9am-6pm EST',
     },
     {

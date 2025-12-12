@@ -49,6 +49,10 @@ import bodycompositionhigher from "@/assets/telthdevices/body-composotion-ind.we
 import biochemistrypoct from "@/assets/telthdevices/biochem-poct-ind.jpg"
 import immunoanalyserpoct from "@/assets/telthdevices/immunoanalyzer-uk.webp"
 import hematologypoct from "@/assets/telthdevices/SCITEK-Fully-Automatic-Dry-Chemistry-Analyzer-POCT-12minutes-sample.avif"
+import basicHubImage from "@/assets/AI Care HUB - Basic.jpg"
+import advancedHubImage from "@/assets/AI Care Hub - Advance.jpg"
+import multispecialtyHubImage from "@/assets/AI Care HUB - Multispeciality.jpg"
+import kioskHubImage from "../assets/Telthkiosk.jpg"
 
 interface MouseEventHandlers {
   (e: React.MouseEvent): void;
@@ -180,7 +184,41 @@ const addonDevices = {
       imageSrc: immunoanalyserpoct,
     }
   ],
-  Multispecialty: []
+  Multispecialty: [],
+  KIOSK: [
+    {
+      id: "body-composition-higher-adv",
+      name: "Body Composition Analyzer (Higher)",
+      description: "Premium body composition analysis system",
+      function: "Advanced body analysis",
+      specifications: ["8-electrode technology", "Android/iOS app", "Cloud storage"],
+      imageSrc: bodycompositionadvanced,
+    },
+    {
+      id: "hematology-automated",
+      name: "Hematology Analyzer (Automated)",
+      description: "Fully automated hematology analysis system",
+      function: "Complete blood count",
+      specifications: ["23 parameters", "5-part differential", "80 samples/hour"],
+      imageSrc: hematologypoct,
+    },
+    {
+      id: "biochemistry-automated",
+      name: "Biochemistry Analyzer (Automated)",
+      description: "Comprehensive automated biochemistry analyzer",
+      function: "Biochemical profiling",
+      specifications: ["50+ tests", "Random access", "150 tests/hour"],
+      imageSrc: biochemistrypoct,
+    },
+    {
+      id: "immunology-automated",
+      name: "Immunology Analyzer (Automated)",
+      description: "Automated immunology testing platform",
+      function: "Immunoassay testing",
+      specifications: ["Multiple methodologies", "Batch processing", "High throughput"],
+      imageSrc: immunoanalyserpoct,
+    }
+  ],
 };
 // Device data per hub
 const hubDevices: Record<string, HubDevice[]> = {
@@ -650,6 +688,164 @@ const hubDevices: Record<string, HubDevice[]> = {
       specs: ["Multi-parameter", "Rapid results", "Quality control"],
     },
   ],
+  KIOSK: [
+    {
+      id: "digital-thermometer",
+      name: "Digital Thermometer",
+      description: "High-precision temperature device",
+      mrp: 299,
+      discountPercent: 15,
+      finalPrice: 254,
+      imageSrc: thermometer,
+      specs: ["±0.1°C accuracy", "Fast response", "Memory recall"],
+    },
+    {
+      id: "foetal-doppler",
+      name: "Foetal Doppler",
+      description: "Fetal heart rate monitoring device",
+      mrp: 1499,
+      discountPercent: 20,
+      finalPrice: 1199,
+      imageSrc: fetaldoppler,
+      specs: ["2MHz probe", "LCD display", "Built-in speaker"],
+    },
+    {
+      id: "spirometer",
+      name: "Spirometer",
+      description: "Lung function testing device",
+      mrp: 2499,
+      discountPercent: 10,
+      finalPrice: 2249,
+      imageSrc: spirometer,
+      specs: ["FEV1/FVC measurement", "Portable design", "USB connectivity"],
+    },
+    {
+      id: "stethoscope",
+      name: "Stethoscope",
+      description: "Advanced acoustic monitoring",
+      mrp: 3999,
+      discountPercent: 25,
+      finalPrice: 2999,
+      imageSrc: stethoscope,
+      specs: ["40x amplification", "Noise reduction", "Recording capability"],
+    },
+    {
+      id: "wireless-stadiometer",
+      name: "Wireless Stadiometer",
+      description: "Digital height measurement device",
+      mrp: 4599,
+      discountPercent: 15,
+      finalPrice: 3909,
+      imageSrc: wirelessstadiometer,
+      specs: ["Wireless connectivity", "Digital display", "Auto-calibration"],
+    },
+    {
+      id: "otoscope",
+      name: "Otoscope",
+      description: "Ear examination and diagnosis",
+      mrp: 3299,
+      discountPercent: 20,
+      finalPrice: 2639,
+      imageSrc: otoscope,
+      specs: ["LED illumination", "Multiple specula", "Portable design"],
+    },
+    {
+      id: "dermatoscope",
+      name: "Dermatoscope",
+      description: "Skin surface microscopy",
+      mrp: 5999,
+      discountPercent: 30,
+      finalPrice: 4199,
+      imageSrc: dermatoscope,
+      specs: ["10x magnification", "Polarized light", "Image capture"],
+    },
+    {
+      id: "oral-camera",
+      name: "Oral Camera",
+      description: "Intraoral imaging system",
+      mrp: 7899,
+      discountPercent: 25,
+      finalPrice: 5924,
+      imageSrc: oralcamera,
+      specs: ["HD resolution", "Waterproof", "Wireless operation"],
+    },
+    {
+      id: "opthalmoscope",
+      name: "Opthalmoscope",
+      description: "Retinal and eye examination",
+      mrp: 4299,
+      discountPercent: 20,
+      finalPrice: 3439,
+      imageSrc: opthalmoscope,
+      specs: ["Multiple apertures", "LED illumination", "Rechargeable"],
+    },
+    {
+      id: "pulse-oximeter",
+      name: "Pulse Oximeter",
+      description: "SpO2 and heart rate monitor",
+      mrp: 899,
+      discountPercent: 15,
+      finalPrice: 764,
+      imageSrc: pulseoximter,
+      specs: ["OLED display", "Low battery indicator", "Auto power-off"],
+    },
+    {
+      id: "ecg-bp-monitor",
+      name: "Omron COMPLETE – ECG + BP Monitor",
+      description: "Combined cardiac and blood pressure monitoring",
+      mrp: 5999,
+      discountPercent: 20,
+      finalPrice: 4799,
+      imageSrc: ecgbpmonitor,
+      specs: ["12-lead ECG", "Irregular heartbeat detection", "Cloud sync"],
+    },
+    {
+      id: "hemoglobin-meter",
+      name: "Hemoglobin Meter (PoCT)",
+      description: "Point-of-care hemoglobin testing",
+      mrp: 8999,
+      discountPercent: 25,
+      finalPrice: 6749,
+      imageSrc: hemoglobinpoct,
+      specs: ["Rapid results", "Small blood sample", "Portable design"],
+    },
+    {
+      id: "multi-biochem-monitor",
+      name: "Multi Biochem Monitor (PoCT)",
+      description: "Multi-parameter biochemical analysis",
+      mrp: 15999,
+      discountPercent: 15,
+      finalPrice: 13599,
+      imageSrc: multibiochem,
+      specs: ["Multi-parameter", "Rapid results", "Quality control"],
+    },
+    {
+      id: "urine-analyzer",
+      name: "Urine Analyzer (PoCT)",
+      description: "Automated urine testing system",
+      mrp: 10999,
+      discountPercent: 20,
+      finalPrice: 8799,
+      imageSrc: urineanalyser,
+      specs: ["10 parameters", "Auto calibration", "QR code reader"],
+    },
+    {
+      id: "Ultrasound-monitor",
+      name: "Portable Ultrasound Physiotherapy Machine",
+      description: "Multi-parameter biochemical analysis",
+      mrp: 15999,
+      discountPercent: 15,
+      finalPrice: 13599,
+      imageSrc: multibiochem,
+      specs: ["Multi-parameter", "Rapid results", "Quality control"],
+    },
+  ],
+};
+const hubImages = {
+  Basic: basicHubImage,
+  Advanced: advancedHubImage,
+  Multispecialty: multispecialtyHubImage,
+  KIOSK: kioskHubImage
 };
 
 const categories = [
@@ -735,20 +931,59 @@ const categories = [
       "Urine Analyzer (PoCT)",
     ],
   },
+  {
+    id: "KIOSK",
+    name: "KIOSK",
+    description: "Complete healthcare solution",
+    price: "$9,999",
+    features: [
+      "Full Diagnostic Suite",
+      "Specialized Modules",
+      "Enterprise Integration",
+      "Custom AI Models",
+      "24/7 Support",
+    ],
+    specifications: [
+      "Digital Thermometer",
+      "Foetal Doppler",
+      "Spirometer",
+      "Stethoscope",
+      "Body Composition Analyzer",
+      "Wireless Stadiometer",
+      "Otoscope",
+      "Dermatoscope",
+      "Oral Camera",
+      "Opthalmoscope",
+      "Pulse Oximeter",
+      "Omron COMPLETE – ECG + BP Monitor",
+      "Hemoglobin Meter (PoCT)",
+      "Multi Biochem Monitor (PoCT)",
+      "Immunology Analyzer (PoCT)",
+      "Urine Analyzer (PoCT)",
+    ],
+  },
 ];
 
 const producthighlights = {
   Basic: {
     totalParams: 100,
-    outputDays: 7
+    outputDays: 7,
+    price: '$160000'
   },
   Advanced: {
     totalParams: 200,
-    outputDays: 3
+    outputDays: 3,
+    price: '$250000'
   },
   Multispecialty: {
     totalParams: 500,
-    outputDays: 1
+    outputDays: 1,
+    price: '$280000'
+  },
+  KIOSK: {
+    totalParams: 500,
+    outputDays: 1,
+    price: '$30000'
   }
 };
 // Separate careplans data (appears in all categories)
@@ -817,7 +1052,9 @@ const ConfigurationHub = () => {
   }>>({
     Basic: { selectedAddons: [], careplanQuantities: {}, selectedColor: "#000000" },
     Advanced: { selectedAddons: [], careplanQuantities: {}, selectedColor: "#000000" },
-    Multispecialty: { selectedAddons: [], careplanQuantities: {}, selectedColor: "#000000" }
+    Multispecialty: { selectedAddons: [], careplanQuantities: {}, selectedColor: "#000000" },
+    KIOSK: { selectedAddons: [], careplanQuantities: {}, selectedColor: "#000000" } // ← ADD THIS LINE
+
   });
 
   // Global states (remain same)
@@ -1665,7 +1902,7 @@ const ConfigurationHub = () => {
         resetRecaptcha(); // Clear reCAPTCHA
         setRecaptchaSolved(false);
         // Re-initialize reCAPTCHA so user can try again
-        setTimeout(() => { 
+        setTimeout(() => {
           initializeRecaptchaForModal();
         }, 500);
       }
@@ -1804,7 +2041,7 @@ const ConfigurationHub = () => {
           <div className="space-y-4 lg:space-y-6 xl:sticky xl:top-20 xl:self-start">
             <Card className="p-3 sm:p-4 bg-gradient-dark text-white">
               <div className="relative">
-                <div className="aspect-square bg-gradient-to-br from-gray-900 to-black rounded-lg overflow-hidden relative min-h-[300px] sm:min-h-[400px]">
+                {/* <div className="aspect-square bg-gradient-to-br from-gray-900 to-black rounded-lg overflow-hidden relative min-h-[300px] sm:min-h-[400px]">
                   <MedicalDevice3D
                     selectedColor={hubSelections[activeCategory].selectedColor}
                     category={activeCategory}
@@ -1831,7 +2068,46 @@ const ConfigurationHub = () => {
                       3D Interactive Model
                     </Badge>
                   </div>
+                </div> */}
+                {/* Image Display Section */}
+                <div className="aspect-square bg-gradient-to-br from-gray-900 to-black rounded-lg overflow-hidden relative min-h-[300px] sm:min-h-[400px] flex items-center justify-center">
+                  {/* Hub Image */}
+                  <img
+                    src={hubImages[activeCategory]}
+                    alt={`${currentCategory?.name} Hub`}
+                    className="w-full h-full object-contain p-4"
+                  />
+
+                  {/* Optional: Add color overlay for selected color */}
+                  <div
+                    className="absolute inset-0 mix-blend-overlay opacity-20"
+                    style={{ backgroundColor: hubSelections[activeCategory].selectedColor }}
+                  />
+
+                  {/* Explore Button (if you still want it) */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <Button
+                      onClick={toggleExploreMode}
+                      variant="secondary"
+                      size="sm"
+                      className="bg-white/90 text-black hover:bg-white"
+                    >
+                      <Eye className="mr-2 h-4 w-4" />
+                      {isExploreMode ? "Coming soon" : "Explore"}
+                    </Button>
+                  </div>
+
+                  {/* 3D Interactive Model Badge (optional) */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <Badge
+                      variant="secondary"
+                      className="text-sm px-3 py-1 bg-white/90 text-black"
+                    >
+                      Hub Visualization
+                    </Badge>
+                  </div>
                 </div>
+
                 <div className="mt-4 text-center">
                   <h3 className="text-xl font-semibold">{currentCategory?.name}</h3>
                   <p className="text-gray-300 mt-1">
@@ -1954,6 +2230,22 @@ const ConfigurationHub = () => {
                       {producthighlights[activeCategory].outputDays > 1 ? 's' : ''}
                     </span>
                     <span className="text-xs">Test Output</span>
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    className="flex flex-col items-center gap-1 h-auto py-4 px-5 rounded-2xl
+        bg-[#e0e0e0] dark:bg-[#1e1e1e]
+        shadow-[6px_6px_12px_#bebebe,_-6px_-6px_12px_#ffffff]
+        dark:shadow-[6px_6px_12px_#141414,_-6px_-6px_12px_#2a2a2a]
+        hover:shadow-[inset_6px_6px_12px_#bebebe,_inset_-6px_-6px_12px_#ffffff]
+        dark:hover:shadow-[inset_6px_6px_12px_#141414,_inset_-6px_-6px_12px_#2a2a2a]
+        transition-all duration-300"
+                  >
+                    <span className="text-xs text-muted-foreground">Price</span>
+                    <span className="text-xl font-bold text-primary">
+                      {producthighlights[activeCategory].price}
+                    </span>
+                    <span className="text-xs">Discounts applicable</span>
                   </Button>
                 </div>
               </CardContent>

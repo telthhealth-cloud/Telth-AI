@@ -132,7 +132,6 @@ const ServicesSection = () => {
                     <div key={item.id} className="flex items-center justify-between bg-primary-foreground/10 p-3 rounded-lg">
                       <span className="font-medium">{item.title}</span>
                       <div className="flex items-center gap-2">
-                        <span>{item.price}</span>
                         <Button
                           size="sm"
                           variant="ghost"
@@ -166,9 +165,9 @@ const ServicesSection = () => {
                     <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <IconComponent className="h-6 w-6 text-primary-foreground" />
                     </div>
-                    <Badge variant="secondary" className="text-lg font-bold">
+                    {/* <Badge variant="secondary" className="text-lg font-bold">
                       {service.price}
-                    </Badge>
+                    </Badge> */}
                   </div>
                   <CardTitle className="text-xl">{service.title}</CardTitle>
                 </CardHeader>
@@ -218,9 +217,9 @@ const ServicesSection = () => {
                     </div>
                     <div>
                       <DialogTitle className="text-2xl">{selectedService.title}</DialogTitle>
-                      <Badge variant="secondary" className="text-lg font-bold mt-1">
+                      {/* <Badge variant="secondary" className="text-lg font-bold mt-1">
                         {selectedService.price}
-                      </Badge>
+                      </Badge> */}
                     </div>
                   </div>
                 </DialogHeader>

@@ -1320,7 +1320,7 @@ const ConfigurationHub = () => {
 
   const createRecaptcha = (containerId: string = 'recaptcha-container'): Promise<RecaptchaVerifier> => {
     return new Promise((resolve, reject) => {
-      console.log('🔄 Creating OTP reCAPTCHA for container:', containerId);
+      // console.log('🔄 Creating OTP reCAPTCHA for container:', containerId);
 
       // Cleanup existing OTP reCAPTCHA (but don't touch bot verification one)
       if (window.recaptchaVerifier && containerId === 'recaptcha-container-otp') {
@@ -1343,7 +1343,7 @@ const ConfigurationHub = () => {
           {
             size: 'normal',
             callback: (response: string) => {
-              console.log('✅ OTP reCAPTCHA solved in container:', containerId);
+              // console.log('✅ OTP reCAPTCHA solved in container:', containerId);
               // Don't auto-proceed here - let user manually verify OTP
             },
             'expired-callback': () => {
@@ -1358,7 +1358,7 @@ const ConfigurationHub = () => {
         }
 
         recaptchaVerifier.render().then(() => {
-          console.log('✅ OTP reCAPTCHA rendered in:', containerId);
+          // console.log('✅ OTP reCAPTCHA rendered in:', containerId);
           resolve(recaptchaVerifier);
         }).catch(error => {
           console.error('❌ OTP reCAPTCHA render failed:', error);
@@ -1373,7 +1373,7 @@ const ConfigurationHub = () => {
   };
   const initializeBotVerificationRecaptcha = async () => {
     try {
-      console.log('🔄 Creating bot verification reCAPTCHA...');
+      // console.log('🔄 Creating bot verification reCAPTCHA...');
 
       const container = document.getElementById('recaptcha-container-initial');
       if (!container) {
@@ -1391,7 +1391,7 @@ const ConfigurationHub = () => {
         {
           size: 'normal',
           callback: (response: string) => {
-            console.log('✅ Bot verification reCAPTCHA solved - proceeding to OTP');
+            // console.log('✅ Bot verification reCAPTCHA solved - proceeding to OTP');
             handleRecaptchaSuccess();
           },
           'expired-callback': () => {
@@ -1429,7 +1429,7 @@ const ConfigurationHub = () => {
     setTimeout(async () => {
       setOtpLoading(true);
       try {
-        console.log('📱 Starting OTP generation...');
+        // console.log('📱 Starting OTP generation...');
         const otpResult = await generateOTP(formData.phone);
 
         if (!otpResult.success) {
@@ -1507,17 +1507,17 @@ const ConfigurationHub = () => {
 
       // Combine country code with phone number
       const formattedPhone = `${countryCode}${phoneNumber.replace(/\D/g, '')}`;
-      console.log('📞 Formatted phone:', formattedPhone);
+      // console.log('📞 Formatted phone:', formattedPhone);
 
       // Verify reCAPTCHA is ready
       if (!window.recaptchaVerifier) {
         throw new Error('reCAPTCHA not initialized. Please complete the verification first.');
       }
 
-      console.log('✅ Using verified reCAPTCHA, sending OTP...');
+      // console.log('✅ Using verified reCAPTCHA, sending OTP...');
       const confirmation = await signInWithPhoneNumber(auth, formattedPhone, window.recaptchaVerifier);
 
-      console.log('✅ OTP sent successfully!');
+      // console.log('✅ OTP sent successfully!');
       setConfirmationResult(confirmation);
       setOtpSent(true);
       setResendTimer(90);
@@ -1559,7 +1559,7 @@ const ConfigurationHub = () => {
     if (isRecaptchaModalOpen) {
       const initializeRecaptcha = async () => {
         try {
-          console.log('🔄 Initializing reCAPTCHA...');
+          // console.log('🔄 Initializing reCAPTCHA...');
 
           const container = document.getElementById('recaptcha-container');
           if (!container) {
@@ -1583,16 +1583,16 @@ const ConfigurationHub = () => {
             {
               size: 'normal',
               callback: (response: string) => {
-                console.log('✅ reCAPTCHA solved successfully');
+                // console.log('✅ reCAPTCHA solved successfully');
                 setRecaptchaSolved(true);
               },
               'expired-callback': () => {
-                console.log('❌ reCAPTCHA expired');
+                // console.log('❌ reCAPTCHA expired');
                 setRecaptchaSolved(false);
                 setOtpError('Verification expired. Please try again.');
               },
               'error-callback': () => {
-                console.log('❌ reCAPTCHA error');
+                // console.log('❌ reCAPTCHA error');
                 setRecaptchaSolved(false);
                 setOtpError('Verification failed. Please try again.');
               }
@@ -1602,7 +1602,7 @@ const ConfigurationHub = () => {
           // Render and store widget ID
           const widgetId = await window.recaptchaVerifier.render();
           setRecaptchaWidgetId(widgetId);
-          console.log('✅ reCAPTCHA rendered with widget ID:', widgetId);
+          // console.log('✅ reCAPTCHA rendered with widget ID:', widgetId);
 
           // Reset solved state
           setRecaptchaSolved(false);
@@ -1620,7 +1620,7 @@ const ConfigurationHub = () => {
   // Handle OTP when modal opens
   useEffect(() => {
     if (otpModalOpen && !otpSent && !confirmationResult) {
-      console.log('🔄 OTP modal opened, generating OTP...');
+      // console.log('🔄 OTP modal opened, generating OTP...');
 
       const generateOtpOnOpen = async () => {
         if (formData.phone && window.recaptchaVerifier) {
@@ -1645,7 +1645,7 @@ const ConfigurationHub = () => {
   // Remove the debugging useEffect and replace with this:
   useEffect(() => {
     if (isRecaptchaModalOpen) {
-      console.log('🎯 reCAPTCHA modal opened, initializing...');
+      // console.log('🎯 reCAPTCHA modal opened, initializing...');
 
       // Small delay to ensure DOM is ready
       const timer = setTimeout(() => {
@@ -1666,13 +1666,13 @@ const ConfigurationHub = () => {
 
   const initializeRecaptchaForModal = async () => {
     try {
-      console.log('🔄 Initializing reCAPTCHA for modal...');
+      // console.log('🔄 Initializing reCAPTCHA for modal...');
 
       // Wait a bit for the DOM to be ready
       await new Promise(resolve => setTimeout(resolve, 100));
 
       const container = document.getElementById('recaptcha-container');
-      console.log('🔍 Looking for recaptcha-container:', container);
+      // console.log('🔍 Looking for recaptcha-container:', container);
 
       if (!container) {
         console.error('❌ reCAPTCHA container not found');
@@ -1683,7 +1683,7 @@ const ConfigurationHub = () => {
           newContainer.id = 'recaptcha-container';
           newContainer.className = 'flex justify-center w-full min-h-[78px] border rounded-lg p-4 bg-gray-50';
           modalContent.querySelector('div > div:last-child')?.prepend(newContainer);
-          console.log('✅ Created recaptcha container dynamically');
+          // console.log('✅ Created recaptcha container dynamically');
         }
         return;
       }
@@ -1697,7 +1697,7 @@ const ConfigurationHub = () => {
         window.recaptchaVerifier = null;
       }
 
-      console.log('✅ Container found, creating reCAPTCHA...');
+      // console.log('✅ Container found, creating reCAPTCHA...');
 
       // Create and render reCAPTCHA
       const recaptchaVerifier = new RecaptchaVerifier(
@@ -1727,7 +1727,7 @@ const ConfigurationHub = () => {
       // Render reCAPTCHA
       console.log('🎨 Rendering reCAPTCHA...');
       const widgetId = await recaptchaVerifier.render();
-      console.log('✅ reCAPTCHA rendered with widget ID:', widgetId);
+      // console.log('✅ reCAPTCHA rendered with widget ID:', widgetId);
 
       setRecaptchaSolved(false);
 
@@ -2333,7 +2333,6 @@ const ConfigurationHub = () => {
                       Specs
                     </Button>
                   </div>
-
                   {/* 3D Interactive Model Badge (optional) */}
                   <div className="absolute top-4 left-4 z-10">
                     <Badge

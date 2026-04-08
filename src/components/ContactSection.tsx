@@ -44,7 +44,7 @@ const ContactSection = () => {
 
     try {
       // ✅ Send form data to backend
-      const response = await fetch('https://contactforms-henna.vercel.app/api/submit', {
+      const response = await fetch('https://enquiry.mytelth.com/api/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

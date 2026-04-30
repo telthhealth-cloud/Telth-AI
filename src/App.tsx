@@ -2,13 +2,27 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { useEffect, useState } from "react";
 import TelthAILoader from "./pages/Loder";
 
 const queryClient = new QueryClient();
+
+function PageTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag("config", "G-418G5C6CG4", {
+        page_path: location.pathname,
+      });
+    }
+  }, [location]);
+
+  return null;
+}
 
 const App = () => {
      const [loading,setloading]=useState(true)
@@ -28,6 +42,7 @@ return (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+      <PageTracker/>
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
